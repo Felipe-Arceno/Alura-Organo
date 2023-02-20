@@ -17,3 +17,6 @@
   padding: 24px;
   box-sizing: border-box;
 }
+.campo-texto input::placeholder {
+  color: lightgray;
+}
