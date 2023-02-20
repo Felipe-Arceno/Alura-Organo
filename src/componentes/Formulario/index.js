@@ -34,6 +34,11 @@ const Formulario = () => {
           label="Modelo"
           placeholder="Digite o modelo"
         />
+        <CampoTexto
+          obrigatorio={true}
+          label="Local"
+          placeholder="Digite o local do veículo"
+        />
         <CampoTexto label="Imagem" placeholder="Digite o endereço da imagem" />
         <ListaSuspensa
           obrigatorio={true}
