@@ -2,6 +2,7 @@ import CampoTexto from "../CampoTexto";
 import ListaSuspensa from "../ListaSuspensa";
 import Botao from "../Botao";
 import "./Formulario.css";
+import { useState } from "react";
 
 const Formulario = () => {
   const categorias = [
@@ -14,10 +15,23 @@ const Formulario = () => {
     "Minivan",
   ];
 
+  const [marca, setMarca] = useState("");
+  const [modelo, setModelo] = useState("");
+  const [local, setLocal] = useState("");
+  const [imagem, setImagem] = useState("");
+  const [categoria, setCategoria] = useState("");
+
   const aoSalvar = (event) => {
     event.preventDefault();
 
-    console.log("Form foi submetido");
+    console.log(
+      "Form foi submetido => ",
+      marca,
+      modelo,
+      local,
+      imagem,
+      categoria
+    );
   };
 
   return (
@@ -28,22 +42,35 @@ const Formulario = () => {
           obrigatorio={true}
           label="Marca"
           placeholder="Digite a marca"
+          valor={marca}
+          aoAlterado={(valor) => setMarca(valor)}
         />
         <CampoTexto
           obrigatorio={true}
           label="Modelo"
           placeholder="Digite o modelo"
+          valor={modelo}
+          aoAlterado={(valor) => setModelo(valor)}
         />
         <CampoTexto
           obrigatorio={true}
           label="Local"
           placeholder="Digite o local do veículo"
+          valor={local}
+          aoAlterado={(valor) => setLocal(valor)}
         />
-        <CampoTexto label="Imagem" placeholder="Digite o endereço da imagem" />
+        <CampoTexto
+          label="Imagem"
+          placeholder="Digite o endereço da imagem"
+          valor={imagem}
+          aoAlterado={(valor) => setImagem(valor)}
+        />
         <ListaSuspensa
           obrigatorio={true}
           label="Categoria"
           itens={categorias}
+          valor={categoria}
+          aoAlterado={(valor) => setCategoria(valor)}
         />
         <Botao>Criar Card</Botao>
       </form>

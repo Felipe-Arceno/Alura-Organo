@@ -16,6 +16,7 @@
   font-size: 24px;
   padding: 24px;
   box-sizing: border-box;
+  color: rgb(56, 56, 56);
 }
 .campo-texto input::placeholder {
   color: lightgray;
