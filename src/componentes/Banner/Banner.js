@@ -5,7 +5,7 @@ function Banner() {
   return (
     <header className="banner">
       <img
-        src="/imagens/banner-car.png"
+        src="/imagens/parking-banner.jpg"
         alt="O banner principal da página do Organo"
       />
     </header>

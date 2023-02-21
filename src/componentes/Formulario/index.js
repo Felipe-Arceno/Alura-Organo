@@ -7,26 +7,67 @@ import { useState } from "react";
 const Formulario = (props) => {
   const [marca, setMarca] = useState("");
   const [modelo, setModelo] = useState("");
+  const [placa, setPlaca] = useState("");
   const [local, setLocal] = useState("");
   const [imagem, setImagem] = useState("");
-  const [categoria, setCategoria] = useState("");
+  const [piso, setPiso] = useState("");
+  const [vagasOcupadas, setVagaOcupada] = useState([]);
 
-  const aoSalvar = (event) => {
-    event.preventDefault();
+  const validaDados = () => {
+    let vagaAtual = local;
+
+    if (isNaN(vagaAtual)) {
+      alert("Campo ‘Vaga’ deve conter apenas números");
+      return;
+    } else {
+      if (Number(vagaAtual) === 0) {
+        alert("Campo ‘Vaga’ não pode ser 0");
+        return;
+      }
+
+      if (Number(vagaAtual) < Number(10) && vagaAtual.length <= 1) {
+        vagaAtual = "0" + vagaAtual;
+        setLocal(vagaAtual);
+      }
+
+      let Erro = 0;
+      vagasOcupadas.forEach((element) => {
+        if (element.piso === piso && element.vaga === vagaAtual) {
+          alert(`Já existe um veiculo na vaga ${vagaAtual} do ${element.piso}`);
+          Erro++;
+        }
+      });
+
+      if (Erro > 0) return;
+    }
+
+    let vagaOcupada = {
+      vaga: vagaAtual,
+      piso: piso,
+    };
+    setVagaOcupada([...vagasOcupadas, vagaOcupada]);
 
     props.aoVeiculoCadastrado({
       marca,
       modelo,
-      local,
+      placa,
+      local: vagaAtual,
       imagem,
-      categoria,
+      piso,
     });
 
     setMarca("");
     setModelo("");
+    setPlaca("");
     setLocal("");
     setImagem("");
-    setCategoria("");
+    setPiso("");
+  };
+
+  const aoSalvar = (event) => {
+    event.preventDefault();
+
+    validaDados();
   };
 
   return (
@@ -36,6 +77,7 @@ const Formulario = (props) => {
         <CampoTexto
           obrigatorio={true}
           label="Marca"
+          maxlength="20"
           placeholder="Digite a marca"
           valor={marca}
           aoAlterado={(valor) => setMarca(valor)}
@@ -43,29 +85,39 @@ const Formulario = (props) => {
         <CampoTexto
           obrigatorio={true}
           label="Modelo"
+          maxlength="20"
           placeholder="Digite o modelo"
           valor={modelo}
           aoAlterado={(valor) => setModelo(valor)}
         />
         <CampoTexto
           obrigatorio={true}
-          label="Local"
-          placeholder="Digite o local do veículo"
+          label="Placa"
+          maxlength="7"
+          uppercase={true}
+          placeholder="Digite a placa"
+          valor={placa}
+          aoAlterado={(valor) => setPlaca(valor)}
+        />
+        <CampoTexto
+          obrigatorio={true}
+          label="Vaga"
+          placeholder="Digite o número da vaga do veículo"
           valor={local}
           aoAlterado={(valor) => setLocal(valor)}
+        />
+        <ListaSuspensa
+          obrigatorio={true}
+          label="Piso"
+          itens={props.pisos}
+          valor={piso}
+          aoAlterado={(valor) => setPiso(valor)}
         />
         <CampoTexto
           label="Imagem"
           placeholder="Digite o endereço da imagem"
           valor={imagem}
           aoAlterado={(valor) => setImagem(valor)}
-        />
-        <ListaSuspensa
-          obrigatorio={true}
-          label="Categoria"
-          itens={props.categorias}
-          valor={categoria}
-          aoAlterado={(valor) => setCategoria(valor)}
         />
         <Botao>Criar Card</Botao>
       </form>

@@ -1,43 +1,43 @@
 import { useState } from "react";
 import Banner from "./componentes/Banner/Banner.js";
-import Categoria from "./componentes/Categoria/index.js";
+import Piso from "./componentes/Piso/index.js";
 import Formulario from "./componentes/Formulario/index.js";
 import Rodape from "./componentes/Rodape/index.js";
 
 function App() {
-  const Categorias = [
+  const Pisos = [
     {
-      nome: "Hatch",
+      nome: "Térreo",
       corPrimaria: "#d9f7e9",
       corSecundaria: "#57c278",
     },
     {
-      nome: "Sedan",
+      nome: "1° Andar",
       corPrimaria: "#E8F8FF",
       corSecundaria: "#82CFFA",
     },
     {
-      nome: "SUV",
+      nome: "2° Andar",
       corPrimaria: "#F0F8E2",
       corSecundaria: "#A6D157",
     },
     {
-      nome: "Cupê",
+      nome: "3° Andar",
       corPrimaria: "#FDE7E8",
       corSecundaria: "#E06B69",
     },
     {
-      nome: "Picape",
+      nome: "4° Andar",
       corPrimaria: "#FAE9F5",
       corSecundaria: "#DB6EBF",
     },
     {
-      nome: "Conversível",
+      nome: "5° Andar",
       corPrimaria: "#FFF5D9",
       corSecundaria: "#FFBA05",
     },
     {
-      nome: "Minivan",
+      nome: "6° Andar",
       corPrimaria: "#FFEEDF",
       corSecundaria: "#FF8A29",
     },
@@ -47,25 +47,24 @@ function App() {
 
   const aoNovoVeiculoAdicionado = (veiculo) => {
     setVeiculosState([...veiculosState, veiculo]);
-    console.log(veiculosState);
   };
 
   return (
     <div className="App">
       <Banner />
       <Formulario
-        categorias={Categorias.map((item) => item.nome)}
+        pisos={Pisos.map((item) => item.nome)}
         aoVeiculoCadastrado={(veiculo) => aoNovoVeiculoAdicionado(veiculo)}
       />
 
-      {Categorias.map((categoria) => (
-        <Categoria
-          key={categoria.nome}
-          nome={categoria.nome}
-          corPrimaria={categoria.corPrimaria}
-          corSecundaria={categoria.corSecundaria}
+      {Pisos.map((floor) => (
+        <Piso
+          key={floor.nome}
+          nome={floor.nome}
+          corPrimaria={floor.corPrimaria}
+          corSecundaria={floor.corSecundaria}
           veiculos={veiculosState.filter(
-            (veiculo) => veiculo.categoria === categoria.nome
+            (veiculo) => veiculo.piso === floor.nome
           )}
         />
       ))}

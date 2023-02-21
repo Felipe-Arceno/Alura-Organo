@@ -1,12 +1,12 @@
 import Card from "../Card";
-import "./Categoria.css";
+import "./Piso.css";
 
-const Categoria = (props) => {
+const Piso = (props) => {
   const css = { backgroundColor: props.corPrimaria };
 
   return (
     props.veiculos.length > 0 && (
-      <section className="categoria" style={css}>
+      <section className="piso" style={css}>
         <h3 style={{ borderColor: props.corSecundaria }}>{props.nome}</h3>
         <div className="veiculos">
           {props.veiculos.map((veiculo) => (
@@ -15,7 +15,9 @@ const Categoria = (props) => {
               key={veiculo.modelo}
               marca={veiculo.marca}
               modelo={veiculo.modelo}
+              placa={veiculo.placa}
               imagem={veiculo.imagem}
+              vaga={veiculo.local}
             />
           ))}
         </div>
@@ -24,4 +26,4 @@ const Categoria = (props) => {
   );
 };
 
-export default Categoria;
+export default Piso;

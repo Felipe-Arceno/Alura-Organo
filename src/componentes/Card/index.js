@@ -1,6 +1,6 @@
 import "./Card.css";
 
-const Card = ({ marca, modelo, imagem, corDeFundo }) => {
+const Card = ({ marca, modelo, imagem, corDeFundo, vaga, placa }) => {
   return (
     <div className="card">
       <div className="card-header" style={{ backgroundColor: corDeFundo }}>
@@ -16,6 +16,16 @@ const Card = ({ marca, modelo, imagem, corDeFundo }) => {
       <div className="card-footer">
         <h4>{marca}</h4>
         <h5>{modelo}</h5>
+        <div>
+          <ul>
+            <li>
+              <h5>{placa}</h5>
+            </li>
+            <li>
+              <h5>Vaga: {vaga}</h5>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
