@@ -1,12 +1,11 @@
 .categoria {
   text-align: center;
   padding: 32px;
-  background: #d9f7e9;
 }
 
 .categoria h3 {
   font-size: 32px;
-  border-bottom: 4px solid #57c278;
+  border-bottom: 4px solid;
   display: inline-block;
   padding-bottom: 8px;
 }
