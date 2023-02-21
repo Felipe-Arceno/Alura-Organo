@@ -4,11 +4,12 @@ import Botao from "../Botao";
 import "./Formulario.css";
 import { useState } from "react";
 
-const Formulario = () => {
+const Formulario = (props) => {
   const categorias = [
     "Hatch",
     "Sedan",
     "SUV",
+    "Cupê",
     "Picape",
     "Conversível",
     "Station Wagon",
@@ -24,14 +25,13 @@ const Formulario = () => {
   const aoSalvar = (event) => {
     event.preventDefault();
 
-    console.log(
-      "Form foi submetido => ",
+    props.aoVeiculoCadastrado({
       marca,
       modelo,
       local,
       imagem,
-      categoria
-    );
+      categoria,
+    });
   };
 
   return (
