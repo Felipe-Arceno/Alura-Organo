@@ -11,6 +11,7 @@ const Categoria = (props) => {
         <div className="veiculos">
           {props.veiculos.map((veiculo) => (
             <Card
+              corDeFundo={props.corSecundaria}
               key={veiculo.modelo}
               marca={veiculo.marca}
               modelo={veiculo.modelo}

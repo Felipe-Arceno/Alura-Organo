@@ -2,6 +2,7 @@ import { useState } from "react";
 import Banner from "./componentes/Banner/Banner.js";
 import Categoria from "./componentes/Categoria/index.js";
 import Formulario from "./componentes/Formulario/index.js";
+import Rodape from "./componentes/Rodape/index.js";
 
 function App() {
   const Categorias = [
@@ -68,6 +69,8 @@ function App() {
           )}
         />
       ))}
+
+      <Rodape />
     </div>
   );
 }

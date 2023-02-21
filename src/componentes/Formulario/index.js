@@ -26,6 +26,7 @@ const Formulario = (props) => {
     setModelo("");
     setLocal("");
     setImagem("");
+    setCategoria("");
   };
 
   return (
