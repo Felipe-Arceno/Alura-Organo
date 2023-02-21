@@ -63,6 +63,9 @@ function App() {
           nome={categoria.nome}
           corPrimaria={categoria.corPrimaria}
           corSecundaria={categoria.corSecundaria}
+          veiculos={veiculosState.filter(
+            (veiculo) => veiculo.categoria === categoria.nome
+          )}
         />
       ))}
     </div>

@@ -7,8 +7,15 @@ const Categoria = (props) => {
   return (
     <section className="categoria" style={css}>
       <h3 style={{ borderColor: props.corSecundaria }}>{props.nome}</h3>
-      <Card marca={"Volks"} />
-      <Card marca={"Volks"} />
+      <div className="veiculos">
+        {props.veiculos.map((veiculo) => (
+          <Card
+            marca={veiculo.marca}
+            modelo={veiculo.modelo}
+            imagem={veiculo.imagem}
+          />
+        ))}
+      </div>
     </section>
   );
 };
