@@ -5,17 +5,6 @@ import "./Formulario.css";
 import { useState } from "react";
 
 const Formulario = (props) => {
-  const categorias = [
-    "Hatch",
-    "Sedan",
-    "SUV",
-    "Cupê",
-    "Picape",
-    "Conversível",
-    "Station Wagon",
-    "Minivan",
-  ];
-
   const [marca, setMarca] = useState("");
   const [modelo, setModelo] = useState("");
   const [local, setLocal] = useState("");
@@ -68,7 +57,7 @@ const Formulario = (props) => {
         <ListaSuspensa
           obrigatorio={true}
           label="Categoria"
-          itens={categorias}
+          itens={props.categorias}
           valor={categoria}
           aoAlterado={(valor) => setCategoria(valor)}
         />

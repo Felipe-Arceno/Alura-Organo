@@ -53,6 +53,7 @@ function App() {
     <div className="App">
       <Banner />
       <Formulario
+        categorias={Categorias.map((item) => item.nome)}
         aoVeiculoCadastrado={(veiculo) => aoNovoVeiculoAdicionado(veiculo)}
       />
 

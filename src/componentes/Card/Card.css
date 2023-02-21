@@ -1,0 +1,37 @@
+.card {
+  width: 280px;
+}
+
+.card .card-header {
+  background-color: #f0f0f0;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.card .card-header img {
+  width: 100px;
+  border-radius: 50%;
+  position: relative;
+  bottom: -50px;
+}
+
+.card .card-footer {
+  background-color: #ffffff;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+  border-radius: 0px 0px 10px 10px;
+  padding-top: 90px;
+  padding-bottom: 40px;
+}
+
+.card .card-footer h4 {
+  color: #6278f7;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 8px;
+}
+
+.card .card-footer h5 {
+  font-size: 18px;
+  line-height: 22px;
+  color: #212121;
+  padding: 0 16px;
+}
