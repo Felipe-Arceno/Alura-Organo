@@ -21,6 +21,11 @@ const Formulario = (props) => {
       imagem,
       categoria,
     });
+
+    setMarca("");
+    setModelo("");
+    setLocal("");
+    setImagem("");
   };
 
   return (
