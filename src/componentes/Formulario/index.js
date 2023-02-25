@@ -1,4 +1,4 @@
-import CampoTexto from "../CampoTexto";
+import Campo from "../Campo";
 import ListaSuspensa from "../ListaSuspensa";
 import Botao from "../Botao";
 import "./Formulario.css";
@@ -14,7 +14,7 @@ const Formulario = (props) => {
   const [piso, setPiso] = useState("");
   const [vagasOcupadas, setVagaOcupada] = useState([]);
   const [nomePiso, setNomePiso] = useState("");
-  const [corPiso, setCorPiso] = useState("");
+  const [corPiso, setCorPiso] = useState("#8BEBFE");
 
   const validaDados = () => {
     let vagaAtual = local;
@@ -66,6 +66,8 @@ const Formulario = (props) => {
     setLocal("");
     setImagem("");
     setPiso("");
+    setCorPiso("");
+    setNomePiso("");
   };
 
   const aoSalvar = (event) => {
@@ -78,7 +80,7 @@ const Formulario = (props) => {
     <section className="formulario">
       <form onSubmit={aoSalvar}>
         <h2>Preencha os dados para criar o card do veículo</h2>
-        <CampoTexto
+        <Campo
           obrigatorio={true}
           label="Marca"
           maxlength="20"
@@ -86,7 +88,7 @@ const Formulario = (props) => {
           valor={marca}
           aoAlterado={(valor) => setMarca(valor)}
         />
-        <CampoTexto
+        <Campo
           obrigatorio={true}
           label="Modelo"
           maxlength="20"
@@ -94,7 +96,7 @@ const Formulario = (props) => {
           valor={modelo}
           aoAlterado={(valor) => setModelo(valor)}
         />
-        <CampoTexto
+        <Campo
           obrigatorio={true}
           label="Placa"
           maxlength="7"
@@ -103,7 +105,7 @@ const Formulario = (props) => {
           valor={placa}
           aoAlterado={(valor) => setPlaca(valor)}
         />
-        <CampoTexto
+        <Campo
           obrigatorio={true}
           label="Vaga"
           placeholder="Digite o número da vaga do veículo"
@@ -117,7 +119,7 @@ const Formulario = (props) => {
           valor={piso}
           aoAlterado={(valor) => setPiso(valor)}
         />
-        <CampoTexto
+        <Campo
           label="Imagem"
           placeholder="Digite o endereço da imagem"
           valor={imagem}
@@ -133,7 +135,7 @@ const Formulario = (props) => {
         }}
       >
         <h2>Preencha os dados para criar um novo Piso.</h2>
-        <CampoTexto
+        <Campo
           obrigatorio
           label="Nome"
           maxlength="20"
@@ -141,9 +143,10 @@ const Formulario = (props) => {
           valor={nomePiso}
           aoAlterado={(valor) => setNomePiso(valor)}
         />
-        <CampoTexto
+        <Campo
           obrigatorio
           label="Cor"
+          type="color"
           maxlength="20"
           placeholder="Digite a cor do piso"
           valor={corPiso}
