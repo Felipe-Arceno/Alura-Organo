@@ -30,6 +30,10 @@
   transform: scale(1.1);
 }
 
+.container .botao-hide::selection {
+  background: transparent;
+}
+
 @media screen and (max-width: 720px) {
   .container {
     display: flex;
@@ -44,6 +48,10 @@
     right: 0;
     margin-top: 10px;
     transform: scale(0.7);
+  }
+
+  .container .botao-hide:active {
+    transform: scale(0.8);
   }
 
   .container h2 {
