@@ -1,0 +1,53 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 60px 10px;
+}
+
+.container h2 {
+  color: #1d69b4;
+  font-size: 40px;
+  margin: 2px;
+}
+
+.container .botao-hide {
+  position: absolute;
+  padding: 20px;
+  border: none;
+  border-radius: 50%;
+  background-color: #1d69b4;
+  cursor: pointer;
+  right: 40px;
+}
+
+.container .botao-hide:hover {
+  background-color: #3991e9;
+}
+
+.container .botao-hide:active {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 720px) {
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .container .botao-hide {
+    border-radius: 50%;
+    position: inherit;
+    right: 0;
+    margin-top: 10px;
+    transform: scale(0.7);
+  }
+
+  .container h2 {
+    font-size: 30px;
+    margin: 2px;
+  }
+}

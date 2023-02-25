@@ -15,11 +15,13 @@
   display: flex;
   justify-content: space-around;
   margin-top: 32px;
-  flex-wrap: wrap;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 20px;
 }
 
 .input-cor {
   position: absolute;
   top: 20px;
-  right: 50px;
+  right: 65px;
 }
