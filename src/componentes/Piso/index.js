@@ -21,7 +21,8 @@ const Piso = (props) => {
             return (
               <Card
                 corDeFundo={props.cor}
-                key={veiculo.modelo}
+                key={veiculo.id}
+                id={veiculo.id}
                 marca={veiculo.marca}
                 modelo={veiculo.modelo}
                 placa={veiculo.placa}

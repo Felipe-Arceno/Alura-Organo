@@ -80,23 +80,43 @@ function App() {
       placa: "SNX3421",
       piso: "2° Andar",
     },
+    {
+      id: uuidv4(),
+      marca: "Ford",
+      modelo: "Fiesta",
+      imagem: "",
+      vaga: "03",
+      placa: "MSA3485",
+      piso: "Térreo",
+    },
+    {
+      id: uuidv4(),
+      marca: "Renault",
+      modelo: "Kwid",
+      imagem: "",
+      vaga: "04",
+      placa: "UIA3536",
+      piso: "Térreo",
+    },
+    {
+      id: uuidv4(),
+      marca: "Hyundai",
+      modelo: "Azera",
+      imagem: "",
+      vaga: "03",
+      placa: "JKA5824",
+      piso: "1° Andar",
+    },
   ];
   const [veiculosState, setVeiculosState] = useState(VeiculosDB);
-
-  // if (
-  //   veiculosState.length > 0 &&
-  //   !veiculosState.filter((vei) => vei.modelo === VeiculosDB.modelo)
-  // ) {
-  //   setVeiculosState([...veiculosState, VeiculosDB]);
-  // } else if (veiculosState.length <= 0) {
-  //   setVeiculosState([...veiculosState, VeiculosDB]);
-  // }
 
   const aoNovoVeiculoAdicionado = (veiculo) => {
     setVeiculosState([...veiculosState, veiculo]);
   };
 
-  function deletarVeiculo() {}
+  function deletarVeiculo(id) {
+    setVeiculosState(veiculosState.filter((vei) => vei.id !== id));
+  }
 
   function mudarCorPiso(cor, id) {
     setPisos(
