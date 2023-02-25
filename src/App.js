@@ -129,10 +129,15 @@ function App() {
     );
   }
 
+  function cadastrarPiso(NovoPiso) {
+    setPisos([...pisos, { ...NovoPiso, id: uuidv4() }]);
+  }
+
   return (
     <div className="App">
       <Banner />
       <Formulario
+        cadastrarPiso={cadastrarPiso}
         pisos={pisos.map((item) => item.nome)}
         aoVeiculoCadastrado={(veiculo) => aoNovoVeiculoAdicionado(veiculo)}
       />

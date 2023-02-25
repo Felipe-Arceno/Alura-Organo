@@ -13,6 +13,8 @@ const Formulario = (props) => {
   const [imagem, setImagem] = useState("");
   const [piso, setPiso] = useState("");
   const [vagasOcupadas, setVagaOcupada] = useState([]);
+  const [nomePiso, setNomePiso] = useState("");
+  const [corPiso, setCorPiso] = useState("");
 
   const validaDados = () => {
     let vagaAtual = local;
@@ -122,6 +124,32 @@ const Formulario = (props) => {
           aoAlterado={(valor) => setImagem(valor)}
         />
         <Botao>Criar Card</Botao>
+      </form>
+
+      <form
+        onSubmit={(evento) => {
+          evento.preventDefault();
+          props.cadastrarPiso({ nome: nomePiso, cor: corPiso });
+        }}
+      >
+        <h2>Preencha os dados para criar um novo Piso.</h2>
+        <CampoTexto
+          obrigatorio
+          label="Nome"
+          maxlength="20"
+          placeholder="Digite o nome do Piso"
+          valor={nomePiso}
+          aoAlterado={(valor) => setNomePiso(valor)}
+        />
+        <CampoTexto
+          obrigatorio
+          label="Cor"
+          maxlength="20"
+          placeholder="Digite a cor do piso"
+          valor={corPiso}
+          aoAlterado={(valor) => setCorPiso(valor)}
+        />
+        <Botao>Criar um novo Piso</Botao>
       </form>
     </section>
   );
