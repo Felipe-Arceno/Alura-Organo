@@ -3,69 +3,131 @@ import Banner from "./componentes/Banner/Banner.js";
 import Piso from "./componentes/Piso/index.js";
 import Formulario from "./componentes/Formulario/index.js";
 import Rodape from "./componentes/Rodape/index.js";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const Pisos = [
+  const [pisos, setPisos] = useState([
     {
+      id: uuidv4(),
       nome: "Térreo",
-      corPrimaria: "#d9f7e9",
-      corSecundaria: "#57c278",
+      cor: "#57c278",
     },
     {
+      id: uuidv4(),
       nome: "1° Andar",
-      corPrimaria: "#E8F8FF",
-      corSecundaria: "#82CFFA",
+      cor: "#82CFFA",
     },
     {
+      id: uuidv4(),
       nome: "2° Andar",
-      corPrimaria: "#F0F8E2",
-      corSecundaria: "#A6D157",
+      cor: "#A6D157",
     },
     {
+      id: uuidv4(),
       nome: "3° Andar",
-      corPrimaria: "#FDE7E8",
-      corSecundaria: "#E06B69",
+      cor: "#E06B69",
     },
     {
+      id: uuidv4(),
       nome: "4° Andar",
-      corPrimaria: "#FAE9F5",
-      corSecundaria: "#DB6EBF",
+      cor: "#DB6EBF",
     },
     {
+      id: uuidv4(),
       nome: "5° Andar",
-      corPrimaria: "#FFF5D9",
-      corSecundaria: "#FFBA05",
+      cor: "#FFBA05",
     },
     {
+      id: uuidv4(),
       nome: "6° Andar",
-      corPrimaria: "#FFEEDF",
-      corSecundaria: "#FF8A29",
+      cor: "#FF8A29",
+    },
+  ]);
+  const VeiculosDB = [
+    {
+      id: uuidv4(),
+      marca: "Volkswagen",
+      modelo: "Fusca",
+      imagem: "",
+      vaga: "01",
+      placa: "AAA1234",
+      piso: "Térreo",
+    },
+    {
+      id: uuidv4(),
+      marca: "Chevrolet",
+      modelo: "S10",
+      imagem: "",
+      vaga: "01",
+      placa: "SAD1234",
+      piso: "1° Andar",
+    },
+    {
+      id: uuidv4(),
+      marca: "Chevrolet",
+      modelo: "Onix",
+      imagem: "",
+      vaga: "02",
+      placa: "SVA5134",
+      piso: "Térreo",
+    },
+    {
+      id: uuidv4(),
+      marca: "Range Rover",
+      modelo: "Velar",
+      imagem: "",
+      vaga: "01",
+      placa: "SNX3421",
+      piso: "2° Andar",
     },
   ];
+  const [veiculosState, setVeiculosState] = useState(VeiculosDB);
 
-  const [veiculosState, setVeiculosState] = useState([]);
+  // if (
+  //   veiculosState.length > 0 &&
+  //   !veiculosState.filter((vei) => vei.modelo === VeiculosDB.modelo)
+  // ) {
+  //   setVeiculosState([...veiculosState, VeiculosDB]);
+  // } else if (veiculosState.length <= 0) {
+  //   setVeiculosState([...veiculosState, VeiculosDB]);
+  // }
 
   const aoNovoVeiculoAdicionado = (veiculo) => {
     setVeiculosState([...veiculosState, veiculo]);
   };
 
+  function deletarVeiculo() {}
+
+  function mudarCorPiso(cor, id) {
+    setPisos(
+      pisos.map((piso) => {
+        if (piso.id === id) {
+          piso.cor = cor;
+        }
+        return piso;
+      })
+    );
+  }
+
   return (
     <div className="App">
       <Banner />
       <Formulario
-        pisos={Pisos.map((item) => item.nome)}
+        pisos={pisos.map((item) => item.nome)}
         aoVeiculoCadastrado={(veiculo) => aoNovoVeiculoAdicionado(veiculo)}
       />
 
-      {Pisos.map((floor) => (
+      {pisos.map((floor) => (
         <Piso
-          key={floor.nome}
+          key={floor.id}
+          id={floor.id}
           nome={floor.nome}
-          corPrimaria={floor.corPrimaria}
-          corSecundaria={floor.corSecundaria}
+          cor={floor.cor}
           veiculos={veiculosState.filter(
             (veiculo) => veiculo.piso === floor.nome
           )}
+          aoDeletar={deletarVeiculo}
+          mudarCor={mudarCorPiso}
         />
       ))}
 

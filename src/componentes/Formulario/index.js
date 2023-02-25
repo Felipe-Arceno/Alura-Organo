@@ -3,6 +3,7 @@ import ListaSuspensa from "../ListaSuspensa";
 import Botao from "../Botao";
 import "./Formulario.css";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const Formulario = (props) => {
   const [marca, setMarca] = useState("");
@@ -48,10 +49,11 @@ const Formulario = (props) => {
     setVagaOcupada([...vagasOcupadas, vagaOcupada]);
 
     props.aoVeiculoCadastrado({
+      id: uuidv4(),
       marca,
       modelo,
       placa,
-      local: vagaAtual,
+      vaga: vagaAtual,
       imagem,
       piso,
     });
