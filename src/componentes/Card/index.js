@@ -1,4 +1,5 @@
 import { AiFillCloseCircle } from "react-icons/ai";
+import { BsFillHeartFill, BsHeart } from "react-icons/bs";
 import "./Card.css";
 
 const Card = ({
@@ -10,7 +11,19 @@ const Card = ({
   vaga,
   placa,
   aoDeletar,
+  favorito,
+  aoFavoritar,
 }) => {
+  function favoritar() {
+    aoFavoritar(id);
+  }
+
+  const propsFavorito = {
+    onClick: favoritar,
+    size: 25,
+    cursor: "pointer",
+  };
+
   return (
     <div className="card">
       <AiFillCloseCircle
@@ -41,6 +54,14 @@ const Card = ({
               <h5>Vaga: {vaga}</h5>
             </li>
           </ul>
+        </div>
+
+        <div className="favoritar">
+          {favorito ? (
+            <BsFillHeartFill {...propsFavorito} color="Red" />
+          ) : (
+            <BsHeart {...propsFavorito} color="Grey" />
+          )}
         </div>
       </div>
     </div>

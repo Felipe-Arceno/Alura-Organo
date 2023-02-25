@@ -29,6 +29,8 @@ const Piso = (props) => {
                 imagem={veiculo.imagem}
                 vaga={veiculo.vaga}
                 aoDeletar={props.aoDeletar}
+                aoFavoritar={props.aoFavoritar}
+                favorito={veiculo.favorito}
               />
             );
           })}

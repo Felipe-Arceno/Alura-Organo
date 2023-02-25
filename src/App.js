@@ -51,6 +51,7 @@ function App() {
       imagem: "",
       vaga: "01",
       placa: "AAA1234",
+      favorito: false,
       piso: "Térreo",
     },
     {
@@ -60,6 +61,7 @@ function App() {
       imagem: "",
       vaga: "01",
       placa: "SAD1234",
+      favorito: false,
       piso: "1° Andar",
     },
     {
@@ -69,6 +71,7 @@ function App() {
       imagem: "",
       vaga: "02",
       placa: "SVA5134",
+      favorito: false,
       piso: "Térreo",
     },
     {
@@ -78,6 +81,7 @@ function App() {
       imagem: "",
       vaga: "01",
       placa: "SNX3421",
+      favorito: false,
       piso: "2° Andar",
     },
     {
@@ -87,6 +91,7 @@ function App() {
       imagem: "",
       vaga: "03",
       placa: "MSA3485",
+      favorito: false,
       piso: "Térreo",
     },
     {
@@ -96,6 +101,7 @@ function App() {
       imagem: "",
       vaga: "04",
       placa: "UIA3536",
+      favorito: false,
       piso: "Térreo",
     },
     {
@@ -105,6 +111,7 @@ function App() {
       imagem: "",
       vaga: "03",
       placa: "JKA5824",
+      favorito: false,
       piso: "1° Andar",
     },
   ];
@@ -133,6 +140,17 @@ function App() {
     setPisos([...pisos, { ...NovoPiso, id: uuidv4() }]);
   }
 
+  function resolverFavorito(id) {
+    setVeiculosState(
+      veiculosState.map((veiculo) => {
+        if (veiculo.id === id) {
+          veiculo.favorito = !veiculo.favorito;
+        }
+        return veiculo;
+      })
+    );
+  }
+
   return (
     <div className="App">
       <Banner />
@@ -153,6 +171,7 @@ function App() {
           )}
           aoDeletar={deletarVeiculo}
           mudarCor={mudarCorPiso}
+          aoFavoritar={resolverFavorito}
         />
       ))}
 
